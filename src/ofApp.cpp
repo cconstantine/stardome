@@ -7,12 +7,12 @@ void ofApp::setup()
 
     opcClient = new OpenPixel::Client("localhost", 7890);
 
-    strips.addStrip(ofPoint(30, 30), ofPoint(30, 5*70), 70);
-    strips.addStrip(ofPoint(35, 30), ofPoint(35, 5*82), 82);
-    strips.addStrip(ofPoint(40, 30), ofPoint(40, 5*84), 84);
-    strips.addStrip(ofPoint(45, 30), ofPoint(45, 5*84), 84);
+    strips.addStrip(ofPoint(0, 0), ofPoint(0, 2*70), 70);
+    strips.addStrip(ofPoint(5, 0), ofPoint(5, 2*82), 82);
+    strips.addStrip(ofPoint(10, 0), ofPoint(10, 2*84), 84);
+    strips.addStrip(ofPoint(15, 0), ofPoint(15, 2*84), 84);
 
-    myPlayer.loadMovie("movies/fractals_quiet.mp4");
+    myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
 
     myPlayer.setLoopState(OF_LOOP_NORMAL);
     //myPlayer.setUseTexture(false);
