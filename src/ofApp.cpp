@@ -22,7 +22,12 @@ void ofApp::setup()
 
 void ofApp::update()
 {
+    static float lastTick = ofGetElapsedTimef();
     myPlayer.update(); // get all the new frames
+    if(lastTick + 1 < ofGetElapsedTimef()) {
+        ofLog(OF_LOG_NOTICE, "Framerate: %3.1f", ofGetFrameRate());
+       lastTick = ofGetElapsedTimef();
+    }
 
 }
 

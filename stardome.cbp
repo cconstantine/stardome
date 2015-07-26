@@ -1,12 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="stardome2" />
+		<Option title="stardome" />
 		<Option makefile_is_custom="1" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="addons/;src/;build config/;" />
+		<Option virtualFolders="addons/;src/;build config/;addons/ofxNetwork/src/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/$(PROJECT_NAME)_debug" prefix_auto="1" extension_auto="1" />
@@ -16,6 +16,9 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add directory="apps/myApps/stardome/src" />
+				</Compiler>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
@@ -25,10 +28,55 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add directory="apps/myApps/stardome/src" />
+				</Compiler>
 			</Target>
 		</Build>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxNetwork.h">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxNetworkUtils.h">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.cpp">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.h">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.cpp">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.h">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.cpp">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.h">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.cpp">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
+		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.h">
+			<Option virtualFolder="addons/ofxNetwork/src" />
+		</Unit>
 		<Unit filename="config.make">
 			<Option virtualFolder="build config" />
+		</Unit>
+		<Unit filename="src/LedMatrix.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/LedMatrix.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/OpenPixelClient.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/OpenPixelClient.h">
+			<Option virtualFolder="src/" />
 		</Unit>
 		<Unit filename="src/main.cpp">
 			<Option virtualFolder="src/" />
@@ -44,35 +92,5 @@
 			<envvars />
 			<debugger />
 		</Extensions>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.h">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.cpp">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.h">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxNetworkUtils.h">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.h">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPServer.cpp">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.h">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxNetwork.h">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPClient.cpp">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
-		<Unit filename="../../../addons/ofxNetwork/src/ofxTCPManager.cpp">
-			<Option virtualFolder="addons/ofxNetwork/src" />
-		</Unit>
 	</Project>
 </CodeBlocks_project_file>
