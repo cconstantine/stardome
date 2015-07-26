@@ -11,6 +11,7 @@ void ofApp::setup()
     strips.addStrip(ofPoint(35, 30), ofPoint(35, 5*82), 82);
     strips.addStrip(ofPoint(40, 30), ofPoint(40, 5*84), 84);
     strips.addStrip(ofPoint(45, 30), ofPoint(45, 5*84), 84);
+
     myPlayer.loadMovie("movies/fractals_quiet.mp4");
 
     myPlayer.setLoopState(OF_LOOP_NORMAL);
@@ -23,7 +24,6 @@ void ofApp::update()
 {
     myPlayer.update(); // get all the new frames
 
-    ofSetWindowTitle("ofxOPC NeoPixel: FPS: " +ofToString((int)(ofGetFrameRate())));
 }
 
 void ofApp::exit()
@@ -42,7 +42,7 @@ void ofApp::draw()
 {
     ofBackground(0);
 
-    //myPlayer.draw(0,0);
+    myPlayer.draw(0,0);
 
     strips.grabImageData(myPlayer.getPixelsRef());
     opcClient->writeColors(strips.colorData());
