@@ -4,7 +4,7 @@
 void ofApp::setup()
 {
     ofLog(OF_LOG_NOTICE, "ofApp::setup()");
-ofSetVerticalSync(false);
+    ofSetVerticalSync(false);
     opcClient = new OpenPixel::Client("localhost", 7890);
 
     int x = 40;
@@ -36,6 +36,7 @@ ofSetVerticalSync(false);
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
 
     myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
+    
     myPlayer.setSpeed(1);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
     //myPlayer.setUseTexture(false);
