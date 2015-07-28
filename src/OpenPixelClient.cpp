@@ -24,7 +24,7 @@ namespace OpenPixel {
     }
   }
 
-    void Client::writeColors(vector<ofColor>pix)
+    void Client::writeColors(vector<ofColor>&pix)
     {
         OPCPacket_Header_t header;
 

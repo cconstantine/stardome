@@ -22,7 +22,7 @@ void LedMatrix::addStrip(ofVec2f start, ofVec2f end, unsigned int length)
 
 }
 //--------------------------------------------------------------
-vector <ofColor> LedMatrix::colorData()
+vector <ofColor>& LedMatrix::colorData()
 {
     // Transmit Data
     return colors;

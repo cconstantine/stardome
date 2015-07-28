@@ -14,7 +14,7 @@ public:
     void drawGrabRegion();
 
     // Return Data Method
-    vector <ofColor> colorData();
+    vector <ofColor>& colorData();
 
 private:
     // Hold the Captured Colors

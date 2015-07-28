@@ -4,7 +4,7 @@
 void ofApp::setup()
 {
     ofLog(OF_LOG_NOTICE, "ofApp::setup()");
-    ofSetVerticalSync(false);
+//    ofSetVerticalSync(false);
     opcClient = new OpenPixel::Client("localhost", 7890);
 
     int x = 40;
@@ -69,6 +69,9 @@ void ofApp::exit()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+    if(!myPlayer.isFrameNew()) {
+        return;
+    }
     ofBackground(0);
 
     myPlayer.draw(0,0);
