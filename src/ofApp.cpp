@@ -4,16 +4,39 @@
 void ofApp::setup()
 {
     ofLog(OF_LOG_NOTICE, "ofApp::setup()");
-
+ofSetVerticalSync(false);
     opcClient = new OpenPixel::Client("localhost", 7890);
 
-    strips.addStrip(ofPoint(30, 30), ofPoint(30, 5*70), 70);
-    strips.addStrip(ofPoint(35, 30), ofPoint(35, 5*82), 82);
-    strips.addStrip(ofPoint(40, 30), ofPoint(40, 5*84), 84);
-    strips.addStrip(ofPoint(45, 30), ofPoint(45, 5*84), 84);
+    int x = 40;
+    int y = 20;
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
 
-    myPlayer.loadMovie("movies/fractals_quiet.mp4");
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
 
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+
+
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+
+    myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
+    myPlayer.setSpeed(1);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
     //myPlayer.setUseTexture(false);
 
