@@ -1,2 +1,4 @@
-bin
+bin/data/movies/
+bin/libs
+bin/stardome*
 obj

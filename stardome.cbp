@@ -63,6 +63,25 @@
 		<Unit filename="../../../addons/ofxNetwork/src/ofxUDPManager.h">
 			<Option virtualFolder="addons/ofxNetwork/src" />
 		</Unit>
+		<Unit filename="bin/data/DocumentRoot/404.html" />
+		<Unit filename="bin/data/DocumentRoot/css/bootstrap-theme.css" />
+		<Unit filename="bin/data/DocumentRoot/css/bootstrap-theme.min.css" />
+		<Unit filename="bin/data/DocumentRoot/css/bootstrap.css" />
+		<Unit filename="bin/data/DocumentRoot/css/bootstrap.min.css" />
+		<Unit filename="bin/data/DocumentRoot/css/style.css" />
+		<Unit filename="bin/data/DocumentRoot/fonts/glyphicons-halflings-regular.eot" />
+		<Unit filename="bin/data/DocumentRoot/fonts/glyphicons-halflings-regular.svg" />
+		<Unit filename="bin/data/DocumentRoot/fonts/glyphicons-halflings-regular.ttf" />
+		<Unit filename="bin/data/DocumentRoot/fonts/glyphicons-halflings-regular.woff" />
+		<Unit filename="bin/data/DocumentRoot/img/favicon.ico" />
+		<Unit filename="bin/data/DocumentRoot/img/openFrameworks.png" />
+		<Unit filename="bin/data/DocumentRoot/index.html" />
+		<Unit filename="bin/data/DocumentRoot/js/bootstrap.js" />
+		<Unit filename="bin/data/DocumentRoot/js/bootstrap.min.js" />
+		<Unit filename="bin/data/DocumentRoot/js/jquery.min.js" />
+		<Unit filename="bin/data/DocumentRoot/js/jquery.min.map" />
+		<Unit filename="bin/data/DocumentRoot/uploaded.html" />
+		<Unit filename="bin/data/media/mime.types" />
 		<Unit filename="config.make">
 			<Option virtualFolder="build config" />
 		</Unit>

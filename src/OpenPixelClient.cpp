@@ -24,7 +24,7 @@ namespace OpenPixel {
     }
   }
 
-    void Client::writeColors(vector<ofColor>&pix)
+    void Client::writeColors(vector<ofColor>&pix, float brightness)
     {
         OPCPacket_Header_t header;
 
@@ -41,9 +41,9 @@ namespace OpenPixel {
         for(std::vector<ofColor>::iterator i = pix.begin(); i != pix.end(); ++i) {
           struct OPCPacket_SPCData message;
           ofColor color = *i;
-          message.r = color.r;
-          message.g = color.g;
-          message.b = color.b;
+          message.r = (char)((float)color.r * brightness);
+          message.g = (char)((float)color.g * brightness);
+          message.b = (char)((float)color.b * brightness);
 
           client.sendRawBytes((char *)(&message), sizeof(message));
         }
