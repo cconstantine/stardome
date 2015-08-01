@@ -98,47 +98,61 @@ void ofApp::keyPressed(int key)
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::keyReleased(%d)", key);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y )
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::mouseMoved(%d, %d)", x, y);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::mouseDragged(%d, %d, %d)", x, y, button);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::mousePressed(%d, %d, %d)", x, y, button);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::mouseReleased(%d, %d, %d)", x, y, button);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::windowResized(%d, %d)", w, h);
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::gotMessage");
 
 }
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo)
 {
+    ofLog(OF_LOG_NOTICE, "ofApp::dragEvent");
 
 }
