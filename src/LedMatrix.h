@@ -11,7 +11,7 @@ public:
 
     void addStrip(ofVec2f start, ofVec2f end, unsigned int length);
     void grabImageData(ofPixelsRef pixels);
-    void drawGrabRegion();
+    void drawGrabRegion(ofPath& canvas);
 
     // Return Data Method
     vector <ofColor>& colorData();

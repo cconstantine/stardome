@@ -39,14 +39,16 @@ void LedMatrix::grabImageData(ofPixelsRef pixels)
 
 }
 //--------------------------------------------------------------
-void LedMatrix::drawGrabRegion()
+void LedMatrix::drawGrabRegion(ofPath& canvas)
 {
-    ofSetColor(255, 175);
-    ofNoFill();
+    canvas.setColor(128);
+    canvas.setStrokeColor(128);
+    canvas.setStrokeWidth(1);
+
 
     for (unsigned int i = 0; i < pos.size(); i++)
     {
-        ofCircle(pos[i],2);
+        canvas.circle(pos[i], 2);
     }
 }
 

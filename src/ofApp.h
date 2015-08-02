@@ -26,4 +26,5 @@ class ofApp : public ofBaseApp{
     LedMatrix strips;
     ofVideoPlayer myPlayer;
 
+    ofPath ledOverlay;
 };

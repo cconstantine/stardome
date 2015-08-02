@@ -7,6 +7,7 @@ void ofApp::setup()
 //    ofSetVerticalSync(false);
     opcClient = new OpenPixel::Client("localhost", 7890);
 
+
     int x = 40;
     int y = 20;
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
@@ -36,12 +37,13 @@ void ofApp::setup()
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
 
     myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
-    
+
     myPlayer.setSpeed(1);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
     //myPlayer.setUseTexture(false);
 
     myPlayer.play();
+    strips.drawGrabRegion(ledOverlay);
 }
 
 void ofApp::update()
@@ -69,17 +71,19 @@ void ofApp::exit()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-    if(!myPlayer.isFrameNew()) {
-        return;
-    }
     ofBackground(0);
 
     myPlayer.draw(0,0);
 
+    ledOverlay.draw(0,0);
+
+
+    if(!myPlayer.isFrameNew()) {
+        return;
+    }
     strips.grabImageData(myPlayer.getPixelsRef());
     opcClient->writeColors(strips.colorData());
 
-    strips.drawGrabRegion();
 
 }
 
