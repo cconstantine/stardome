@@ -8,6 +8,7 @@ void ofApp::setup()
     opcClient = new OpenPixel::Client("localhost", 7890);
 
 
+    brightness = 1;
     int x = 40;
     int y = 20;
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
@@ -52,6 +53,7 @@ void ofApp::update()
     myPlayer.update(); // get all the new frames
     if(lastTick + 1 < ofGetElapsedTimef()) {
         ofLog(OF_LOG_NOTICE, "Framerate: %3.1f", ofGetFrameRate());
+        ofLog(OF_LOG_NOTICE, "Brightness: %1.3f", brightness);
        lastTick = ofGetElapsedTimef();
     }
 
@@ -65,7 +67,7 @@ void ofApp::exit()
     for(unsigned int i = 0; i < strips.colorData().size();i++) {
         blank.push_back(ofColor(0));
     }
-    opcClient->writeColors(blank);
+    opcClient->writeColors(blank, 0);
     ofLog(OF_LOG_NOTICE, "strips should be off");
 }
 //--------------------------------------------------------------
@@ -82,7 +84,7 @@ void ofApp::draw()
         return;
     }
     strips.grabImageData(myPlayer.getPixelsRef());
-    opcClient->writeColors(strips.colorData());
+    opcClient->writeColors(strips.colorData(), brightness);
 
 
 }
