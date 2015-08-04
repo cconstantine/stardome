@@ -27,4 +27,6 @@ class ofApp : public ofBaseApp{
     ofVideoPlayer myPlayer;
 
     ofPath ledOverlay;
+    float brightness;
+    float speed;
 };
