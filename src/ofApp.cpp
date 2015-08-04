@@ -94,9 +94,19 @@ void ofApp::draw()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
-    ofLog(OF_LOG_NOTICE, "Got key: %c", key);
+    //ofLog(OF_LOG_NOTICE, "Got key: %c", key);
     if(key == OF_KEY_ESC) {
         exit();
+    } else if(key == OF_KEY_UP) {
+      brightness += 0.01;
+    } else if(key == OF_KEY_DOWN) {
+      brightness -= 0.01;
+    }
+    if (brightness < 0) {
+      brightness = 0;
+    }
+    if (brightness > 1) {
+      brightness = 1;
     }
 
 }
