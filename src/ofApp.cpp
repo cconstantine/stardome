@@ -9,6 +9,7 @@ void ofApp::setup()
 
 
     brightness = 1;
+    speed = 1;
     int x = 40;
     int y = 20;
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
@@ -39,7 +40,7 @@ void ofApp::setup()
 
     myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
 
-    myPlayer.setSpeed(1);
+    myPlayer.setSpeed(speed);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
     //myPlayer.setUseTexture(false);
 
@@ -54,6 +55,7 @@ void ofApp::update()
     if(lastTick + 1 < ofGetElapsedTimef()) {
         ofLog(OF_LOG_NOTICE, "Framerate: %3.1f", ofGetFrameRate());
         ofLog(OF_LOG_NOTICE, "Brightness: %1.3f", brightness);
+        ofLog(OF_LOG_NOTICE, "Speed: %1.3f", speed);
        lastTick = ofGetElapsedTimef();
     }
 
@@ -101,6 +103,10 @@ void ofApp::keyPressed(int key)
       brightness += 0.01;
     } else if(key == OF_KEY_DOWN) {
       brightness -= 0.01;
+    } else if(key == OF_KEY_LEFT) {
+      speed -= 0.1;
+    } else if(key == OF_KEY_RIGHT) {
+      speed += 0.1;
     }
     if (brightness < 0) {
       brightness = 0;
@@ -108,7 +114,13 @@ void ofApp::keyPressed(int key)
     if (brightness > 1) {
       brightness = 1;
     }
-
+    if (speed < 0) {
+      speed = 0;
+    }
+    if (speed > 2) {
+      speed = 2;
+    }
+    myPlayer.setSpeed(speed);
 }
 
 //--------------------------------------------------------------

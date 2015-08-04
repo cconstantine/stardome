@@ -28,4 +28,5 @@ class ofApp : public ofBaseApp{
 
     ofPath ledOverlay;
     float brightness;
+    float speed;
 };
