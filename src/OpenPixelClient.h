@@ -27,7 +27,7 @@ public:
 
     void connect();
 
-    void writeColors(vector<ofColor>&pix);
+    void writeColors(vector<ofColor>&pix, float brightness);
 private:
     string _address;
     int _port;

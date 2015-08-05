@@ -25,4 +25,7 @@ class ofApp : public ofBaseApp{
     OpenPixel::Client* opcClient;
     LedMatrix strips;
     ofVideoPlayer myPlayer;
+
+    float brightness;
+    float speed;
 };

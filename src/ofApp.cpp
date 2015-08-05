@@ -7,6 +7,8 @@ void ofApp::setup()
     opcClient = new OpenPixel::Client("localhost", 7890);
 
 
+    brightness = 1;
+    speed = 1;
     int x = 40;
     int y = 20;
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
@@ -37,7 +39,7 @@ void ofApp::setup()
 
     myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
 
-    myPlayer.setSpeed(1);
+    myPlayer.setSpeed(speed);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
     myPlayer.play();
 }
@@ -48,6 +50,8 @@ void ofApp::update()
     myPlayer.update(); // get all the new frames
     if(lastTick + 1 < ofGetElapsedTimef()) {
         ofLog(OF_LOG_NOTICE, "Framerate: %3.1f", ofGetFrameRate());
+        ofLog(OF_LOG_NOTICE, "Brightness: %1.3f", brightness);
+        ofLog(OF_LOG_NOTICE, "Speed: %1.3f", speed);
        lastTick = ofGetElapsedTimef();
     }
 
@@ -61,7 +65,7 @@ void ofApp::exit()
     for(unsigned int i = 0; i < strips.colorData().size();i++) {
         blank.push_back(ofColor(0));
     }
-    opcClient->writeColors(blank);
+    opcClient->writeColors(blank, 0);
     ofLog(OF_LOG_NOTICE, "strips should be off");
 }
 //--------------------------------------------------------------
@@ -79,7 +83,7 @@ void ofApp::draw()
         return;
     }
     strips.grabImageData(myPlayer.getPixelsRef());
-    opcClient->writeColors(strips.colorData());
+    opcClient->writeColors(strips.colorData(), brightness);
 
 }
 
@@ -88,11 +92,31 @@ void ofApp::draw()
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key)
 {
-    ofLog(OF_LOG_NOTICE, "Got key: %c", key);
+    //ofLog(OF_LOG_NOTICE, "Got key: %c", key);
     if(key == OF_KEY_ESC) {
         exit();
+    } else if(key == OF_KEY_UP) {
+      brightness += 0.01;
+    } else if(key == OF_KEY_DOWN) {
+      brightness -= 0.01;
+    } else if(key == OF_KEY_LEFT) {
+      speed -= 0.1;
+    } else if(key == OF_KEY_RIGHT) {
+      speed += 0.1;
     }
-
+    if (brightness < 0) {
+      brightness = 0;
+    }
+    if (brightness > 1) {
+      brightness = 1;
+    }
+    if (speed < 0) {
+      speed = 0;
+    }
+    if (speed > 2) {
+      speed = 2;
+    }
+    myPlayer.setSpeed(speed);
 }
 
 //--------------------------------------------------------------
