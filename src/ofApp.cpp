@@ -4,7 +4,6 @@
 void ofApp::setup()
 {
     ofLog(OF_LOG_NOTICE, "ofApp::setup()");
-//    ofSetVerticalSync(false);
     opcClient = new OpenPixel::Client("localhost", 7890);
 
 
@@ -40,10 +39,7 @@ void ofApp::setup()
 
     myPlayer.setSpeed(1);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
-    //myPlayer.setUseTexture(false);
-
     myPlayer.play();
-    strips.drawGrabRegion(ledOverlay);
 }
 
 void ofApp::update()
@@ -72,10 +68,11 @@ void ofApp::exit()
 void ofApp::draw()
 {
     ofBackground(0);
+    ofSetColor(255, 255);
 
     myPlayer.draw(0,0);
 
-    ledOverlay.draw(0,0);
+    strips.drawGrabRegion();
 
 
     if(!myPlayer.isFrameNew()) {
@@ -83,7 +80,6 @@ void ofApp::draw()
     }
     strips.grabImageData(myPlayer.getPixelsRef());
     opcClient->writeColors(strips.colorData());
-
 
 }
 

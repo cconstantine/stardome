@@ -25,6 +25,4 @@ class ofApp : public ofBaseApp{
     OpenPixel::Client* opcClient;
     LedMatrix strips;
     ofVideoPlayer myPlayer;
-
-    ofPath ledOverlay;
 };

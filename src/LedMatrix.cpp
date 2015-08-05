@@ -9,8 +9,6 @@ void LedMatrix::addStrip(ofVec2f start, ofVec2f end, unsigned int length)
     float width = abs(end.x - start.x);
     float height = abs(end.y - start.y);
 
-    img.allocate(width,height,OF_IMAGE_COLOR);
-
     float deltaX = width / length;
     float deltaY = height / length;
 
@@ -30,7 +28,6 @@ vector <ofColor>& LedMatrix::colorData()
 //--------------------------------------------------------------
 void LedMatrix::grabImageData(ofPixelsRef pixels)
 {
-    //img.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
 
     for (unsigned int i = 0; i < pos.size(); i++)
     {
@@ -39,16 +36,48 @@ void LedMatrix::grabImageData(ofPixelsRef pixels)
 
 }
 //--------------------------------------------------------------
-void LedMatrix::drawGrabRegion(ofPath& canvas)
+void LedMatrix::drawGrabRegion()
 {
-    canvas.setColor(128);
-    canvas.setStrokeColor(128);
-    canvas.setStrokeWidth(1);
 
-
-    for (unsigned int i = 0; i < pos.size(); i++)
+    if (!overlayDrawn)
     {
-        canvas.circle(pos[i], 2);
+        ofBackground(0);
+        ofFill();
+
+        for (unsigned int i = 0; i < pos.size(); i++)
+        {
+            ofCircle(pos[i],3);
+        }
+
+        img.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_COLOR_ALPHA);
+        img.grabScreen(0,0,ofGetWidth(), ofGetHeight());
+
+        ofPixels alphaPixels;
+        alphaPixels.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_COLOR_ALPHA);
+
+        for(int y = 0;y < ofGetHeight();y++)
+        {
+            for(int x = 0;x < ofGetWidth();x++)
+            {
+                ofColor color = img.getColor(x, y);
+                if (color == ofColor(0) )
+                {
+                    alphaPixels.setColor(x, y, ofColor(0,0,0, 127));
+                }
+                else
+                {
+                    alphaPixels.setColor(x, y, ofColor(0,0,0, 0));
+                }
+            }
+        }
+        img.setFromPixels(alphaPixels);
+
+        overlayDrawn = true;
     }
+    else
+    {
+        img.draw(0,0);
+    }
+
 }
 
