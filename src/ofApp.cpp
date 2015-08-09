@@ -38,6 +38,7 @@ void ofApp::setup()
     strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
 
     myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
+    //myPlayer.loadMovie("movies/anim1_25fps_800k.mp4");
 
     myPlayer.setSpeed(speed);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
@@ -74,7 +75,7 @@ void ofApp::draw()
     ofBackground(0);
     ofSetColor(255, 255);
 
-    myPlayer.draw(0,0);
+    myPlayer.draw(0,0, ofGetWidth(), ofGetHeight());
 
     strips.drawGrabRegion();
 
@@ -82,6 +83,11 @@ void ofApp::draw()
     if(!myPlayer.isFrameNew()) {
         return;
     }
+    static int currentFrame = myPlayer.getCurrentFrame();
+    if(currentFrame < myPlayer.getCurrentFrame() - 1) {
+        ofLog(OF_LOG_NOTICE, "Skipped: %d frames", myPlayer.getCurrentFrame() - currentFrame - 1);
+    }
+    currentFrame = myPlayer.getCurrentFrame();
     strips.grabImageData(myPlayer.getPixelsRef());
     opcClient->writeColors(strips.colorData(), brightness);
 
