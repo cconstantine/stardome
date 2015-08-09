@@ -6,8 +6,8 @@ void LedMatrix::addStrip(ofVec2f start, ofVec2f end, unsigned int length)
     _start = start;
     _end = end;
 
-    float width = abs(end.x - start.x);
-    float height = abs(end.y - start.y);
+    float width = end.x - start.x;
+    float height = end.y - start.y;
 
     float deltaX = width / length;
     float deltaY = height / length;
@@ -36,7 +36,7 @@ void LedMatrix::grabImageData(ofPixelsRef pixels)
 
 }
 //--------------------------------------------------------------
-void LedMatrix::drawGrabRegion()
+void LedMatrix::drawGrabRegion(int width, int height)
 {
 
     if (!overlayDrawn)
@@ -46,23 +46,23 @@ void LedMatrix::drawGrabRegion()
 
         for (unsigned int i = 0; i < pos.size(); i++)
         {
-            ofCircle(pos[i],3);
+            ofCircle(pos[i],1);
         }
 
-        img.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_COLOR_ALPHA);
-        img.grabScreen(0,0,ofGetWidth(), ofGetHeight());
+        img.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
+        img.grabScreen(0,0,width, height);
 
         ofPixels alphaPixels;
-        alphaPixels.allocate(ofGetWidth(), ofGetHeight(), OF_IMAGE_COLOR_ALPHA);
+        alphaPixels.allocate(width, height, OF_IMAGE_COLOR_ALPHA);
 
-        for(int y = 0;y < ofGetHeight();y++)
+        for(int y = 0;y < height;y++)
         {
-            for(int x = 0;x < ofGetWidth();x++)
+            for(int x = 0;x < width;x++)
             {
                 ofColor color = img.getColor(x, y);
                 if (color == ofColor(0) )
                 {
-                    alphaPixels.setColor(x, y, ofColor(0,0,0, 127));
+                    alphaPixels.setColor(x, y, ofColor(0,0,0, 200));
                 }
                 else
                 {
@@ -76,7 +76,7 @@ void LedMatrix::drawGrabRegion()
     }
     else
     {
-        img.draw(0,0);
+        img.draw(0,0, ofGetWidth(), ofGetHeight());
     }
 
 }

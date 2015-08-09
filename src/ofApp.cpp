@@ -5,40 +5,58 @@ void ofApp::setup()
 {
     ofLog(OF_LOG_NOTICE, "ofApp::setup()");
     opcClient = new OpenPixel::Client("localhost", 7890);
-
+    myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
+    while(!myPlayer.isLoaded());
 
     brightness = 1;
     speed = 1;
-    int x = 40;
-    int y = 20;
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    int x = myPlayer.getWidth() / 2;
+    int y = myPlayer.getHeight() / 2;
 
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    float scale = 20;
+    ofPoint pos_0 = ofPoint(x      , y      );
 
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    ofPoint pos_1 = ofPoint(x + scale *  3.917, y + scale *  1.272);
+    ofPoint pos_2 = ofPoint(x + scale *  0    , y + scale *  4.118);
+    ofPoint pos_3 = ofPoint(x + scale * -3.917, y + scale *  1.272);
+    ofPoint pos_4 = ofPoint(x + scale * -2.421, y + scale * -3.332);
+    ofPoint pos_5 = ofPoint(x + scale *  2.421, y + scale * -3.332);
 
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    ofPoint pos_6 = ofPoint(x + scale *  4.423, y + scale *  6.088);
+    ofPoint pos_7 = ofPoint(x + scale * -4.423, y + scale *  6.088);
+    ofPoint pos_8 = ofPoint(x + scale * -7.157, y + scale * -2.325);
+    ofPoint pos_9 = ofPoint(x + scale *  0    , y + scale * -7.526);
+    ofPoint pos_A = ofPoint(x + scale *  7.157, y + scale * -2.325);
 
 
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*70), 70);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*82), 82);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
-    strips.addStrip(ofPoint(x, y), ofPoint(x+=5, y+2*84), 84);
+    strips.addStrip(pos_1, pos_0, 70);
+    strips.addStrip(pos_1, pos_2, 82);
+    strips.addStrip(pos_1, pos_6, 84);
+    strips.addStrip(pos_1, pos_A, 84);
 
-    myPlayer.loadMovie("movies/fractals_quiet_small.mp4");
-    //myPlayer.loadMovie("movies/anim1_25fps_800k.mp4");
+
+    strips.addStrip(pos_2, pos_0, 70);
+    strips.addStrip(pos_2, pos_3, 82);
+    strips.addStrip(pos_2, pos_6, 84);
+    strips.addStrip(pos_2, pos_7, 84);
+
+
+    strips.addStrip(pos_3, pos_0, 70);
+    strips.addStrip(pos_3, pos_4, 82);
+    strips.addStrip(pos_3, pos_7, 84);
+    strips.addStrip(pos_3, pos_8, 84);
+
+
+    strips.addStrip(pos_4, pos_0, 70);
+    strips.addStrip(pos_4, pos_5, 82);
+    strips.addStrip(pos_4, pos_8, 84);
+    strips.addStrip(pos_4, pos_9, 84);
+
+
+    strips.addStrip(pos_5, pos_0, 70);
+    strips.addStrip(pos_5, pos_1, 82);
+    strips.addStrip(pos_5, pos_9, 84);
+    strips.addStrip(pos_5, pos_A, 84);
 
     myPlayer.setSpeed(speed);
     myPlayer.setLoopState(OF_LOOP_NORMAL);
@@ -77,7 +95,7 @@ void ofApp::draw()
 
     myPlayer.draw(0,0, ofGetWidth(), ofGetHeight());
 
-    strips.drawGrabRegion();
+    strips.drawGrabRegion(myPlayer.getWidth(), myPlayer.getHeight());
 
 
     if(!myPlayer.isFrameNew()) {
