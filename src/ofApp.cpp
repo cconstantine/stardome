@@ -13,7 +13,7 @@ void ofApp::setup()
     int x = myPlayer.getWidth() / 2;
     int y = myPlayer.getHeight() / 2;
 
-    float scale = 20;
+    float scale = y / 7.8;
     ofPoint pos_0 = ofPoint(x      , y      );
 
     ofPoint pos_1 = ofPoint(x + scale *  3.917, y + scale *  1.272);
